@@ -8,13 +8,18 @@
     src: url('./assets/fonts/OpenSans-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'Opensans-Semibold';
+    src: url('./assets/fonts/OpenSans-SemiBold.ttf');
+}
+
 body {
     font-family: 'Opensans-Regular', sans-serif;
     font-size: 13px;
 }
 
 .page-layout {
-    margin: 100px 0;
+    margin: 100px 0 30px;
 }
 
 .form-control {

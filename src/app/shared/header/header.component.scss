@@ -11,8 +11,10 @@
                 a {
                     color: $nav-text-color;
                     padding: 5px 0;
+                    text-transform: uppercase;
+                    font-family: 'Opensans-Semibold', sans-serif;
 
-                    &:hover {
+                    &:hover {                        
                         border-bottom: 2px solid $theme-color-pink;
                     }
                 }
