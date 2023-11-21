@@ -1,1 +1,12 @@
-<p>home works!</p>
+<div class="wrapper">
+    <ngb-carousel #carousel [interval]="2000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+        (slide)="onSlide($event)">
+        <ng-template ngbSlide *ngFor="let img of images; track img; let i = index">            
+            <a href="https://www.google.fr/?q=Number+{{ i + 1 }}" target="_blank" rel="nofollow noopener noreferrer">
+                <div class="picsum-img-wrapper d-flex justify-content-center">
+                    <img [src]="img" alt="My image {{ i + 1 }} description" width="600" height="600" />
+                </div>
+            </a>
+        </ng-template>
+    </ngb-carousel>
+</div>

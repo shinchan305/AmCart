@@ -1,1 +1,22 @@
-<p>header works!</p>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-default">
+    <div class="container-fluid">
+        <div>
+            <button class="navbar-toggler me-2" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
+            <a class="navbar-brand" [routerLink]="'/home'">AmCart</a>
+        </div>
+        <div class="collapse navbar-collapse justify-content-center" [ngbCollapse]="isMenuCollapsed">
+            <ul ngbNav [activeId]="route.fragment | async" class="nav-links justify-content-center navbar-nav">
+                <li [ngbNavItem]="link.route" *ngFor="let link of links">
+                    <a ngbNavLink [routerLink]="link.route">{{ link.name }}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex align-items-center menu-icons">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <a href=""><i class="bi bi-person"></i></a>
+            <a href=""><i class="bi bi-heart"></i></a>
+            <a href=""><i class="bi bi-bag"></i></a>
+        </div>
+    </div>
+</nav>

@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { PopoverContentComponent } from './popover-content/popover-content.component';
 import { SearchComponent } from './search/search.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,15 @@ import { SearchComponent } from './search/search.component';
     SearchComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgbModule,
+    RouterModule
+  ],
+  exports: [
+    CommonModule,
+    NgbModule,
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
