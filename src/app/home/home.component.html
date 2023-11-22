@@ -1,8 +1,8 @@
 <div class="wrapper">
-    <ngb-carousel #carousel [interval]="2000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
+    <ngb-carousel #carousel [interval]="3000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus"
         (slide)="onSlide($event)">
-        <ng-template ngbSlide *ngFor="let img of images; track img; let i = index">            
-            <a href="https://www.google.fr/?q=Number+{{ i + 1 }}" target="_blank" rel="nofollow noopener noreferrer">
+        <ng-template ngbSlide *ngFor="let img of images; let i = index">            
+            <a rel="nofollow noopener noreferrer">
                 <div class="picsum-img-wrapper d-flex justify-content-center">
                     <img [src]="img" alt="My image {{ i + 1 }} description" />
                 </div>

@@ -9,15 +9,19 @@ import { IHeaderLinks } from '../models/IHeaderLinks';
 })
 export class HeaderComponent {
   links: IHeaderLinks[] = [
-    { name: 'Men', route: '/catelogue-men' },
-    { name: 'Women', route: '/catelogue-women' },
-    { name: 'Popular', route: '/catelogue-popular' },
-    { name: 'Sale', route: '/catelogue-sale' },
-    { name: 'Blog', route: '/blog' },
-    { name: 'Contacts Us', route: '/contact-us' },
+    { name: 'Men', route: '/catalogue/men', borderColor: '#ee5f73' },
+    { name: 'Women', route: '/catalogue/women', borderColor: '#fb56c1' },
+    { name: 'Popular', route: '/catalogue/popular', borderColor: '#f26a10' },
+    { name: 'Sale', route: '/catalogue/sale', borderColor: '#f2c210' },
+    { name: 'Blog', route: '/blog', borderColor: '#0db7af' },
+    { name: 'Contacts Us', route: '/contact-us', borderColor: '#ff3f6c' },
   ]
 
   isMenuCollapsed: boolean = true;
 
   constructor(public route: ActivatedRoute) {}
+
+  changeBorder(e: any, color: string) {
+    e.target.style.borderBottom = `3px solid ${color}`
+  }
 }

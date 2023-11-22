@@ -13,10 +13,7 @@
                     padding: 5px 0;
                     text-transform: uppercase;
                     font-family: 'Opensans-Semibold', sans-serif;
-
-                    &:hover {                        
-                        border-bottom: 2px solid $theme-color-pink;
-                    }
+                    border: 3px solid transparent;
                 }
             }
         }

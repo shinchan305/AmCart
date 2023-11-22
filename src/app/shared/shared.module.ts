@@ -9,6 +9,7 @@ import { PopoverContentComponent } from './popover-content/popover-content.compo
 import { SearchComponent } from './search/search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     PaginatorComponent,
     PopoverContentComponent,
-    SearchComponent
+    SearchComponent,
+    SafeHtmlPipe
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     NgbModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SafeHtmlPipe
   ]
 })
 export class SharedModule { }

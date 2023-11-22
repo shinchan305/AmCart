@@ -1,13 +1,16 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-default">
     <div class="container-fluid">
         <div>
-            <button class="navbar-toggler me-2" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
+            <button class="navbar-toggler me-2" type="button"
+                (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
             <a class="navbar-brand" [routerLink]="'/home'">AmCart</a>
         </div>
         <div class="collapse navbar-collapse justify-content-center" [ngbCollapse]="isMenuCollapsed">
             <ul ngbNav [activeId]="route.fragment | async" class="nav-links justify-content-center navbar-nav">
                 <li [ngbNavItem]="link.route" *ngFor="let link of links">
-                    <a ngbNavLink [routerLink]="link.route">{{ link.name }}</a>
+                    <a ngbNavLink (mouseenter)="changeBorder($event, link.borderColor)"
+                        (mouseleave)="changeBorder($event, 'transparent')" [routerLink]="link.route">{{
+                        link.name }}</a>
                 </li>
             </ul>
         </div>
