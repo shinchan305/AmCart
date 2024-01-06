@@ -5,7 +5,7 @@ pipeline {
         cleanWs()
     }
 
-    stage("Main build") {
+    stages {
 
         stage('Checkout SCM') {
             checkout([$class: 'GitSCM', branches: [[name: 'main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/shinchan305/AmCart.git']]])
