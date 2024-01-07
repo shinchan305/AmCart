@@ -6,9 +6,14 @@ pipeline {
     }   
 
     stages {
+        stage('Clean workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage('Install') {
             steps {
-                // echo 'Running npm install'
                 bat "npm install"
             }
         }
