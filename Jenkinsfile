@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     options {
-        copyArtifactPermission('amcart-front-cd');
+        copyArtifactPermission('amcart-front-cd/');
     }   
 
     stages {
@@ -30,7 +30,14 @@ pipeline {
 
         stage ('Deploy to S3') {
             steps {
-                build propagate: false, job: 'amcart-frontend-cd'
+                script {
+                    if ("${BRANCH_NAME}" == 'main') {
+                        build propagate: false, job: 'amcart-frontend-cd/main'
+                    }
+                    if ("${BRANCH_NAME}" == 'test') {
+                        build propagate: false, job: 'amcart-frontend-cd/test'
+                    }
+                }
             }
         }
     }
