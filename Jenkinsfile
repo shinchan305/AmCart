@@ -11,18 +11,19 @@ pipeline {
                 bat "npm install"
             }
         }
-
-        stage("Run tests") {
-            steps {
-                bat "npm run test"
-            }
-        }
         
         stage ('Build') {
             steps {
                 bat "npm run build"
             }
         }
+
+        stage("Run tests") {
+            steps {
+                bat "npm run test:ci"
+            }
+        }
+
         stage ('Archive Artifacts') {
             steps {
                 archiveArtifacts artifacts: 'dist/am-cart/*',
