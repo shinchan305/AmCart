@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        copyArtifactPermission('amcart-front-cd');
+    }   
+
     stages {
         stage('Install') {
             steps {
