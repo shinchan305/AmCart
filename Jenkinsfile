@@ -15,5 +15,13 @@ pipeline {
                 bat "npm run build"
             }
         }
+        stage ('Archive Artificats') {
+            steps {
+                archiveArtifacts artifacts: 'dist/am-cart/*',
+                allowEmptyArchive: true,
+                fingerprint: true,
+                onlyIfSuccessful: true
+            }
+        }
     }
 }
