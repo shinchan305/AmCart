@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent anys
 
     stages {
         stage('Install') {
