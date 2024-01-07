@@ -6,12 +6,6 @@ pipeline {
     }   
 
     stages {
-        stage('Clean workspace') {
-            steps {
-                cleanWs()
-            }
-        }
-
         stage('Install') {
             steps {
                 bat "npm install"
@@ -20,7 +14,6 @@ pipeline {
         
         stage ('Build') {
             steps {
-                // echo 'Running npm run build',
                 bat "npm run build"
             }
         }
