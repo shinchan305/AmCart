@@ -26,7 +26,7 @@ pipeline {
 
         stage ('Archive Artifacts') {
             steps {
-                archiveArtifacts artifacts: 'dist/am-cart/*',
+                archiveArtifacts artifacts: 'dist/am-cart/**',
                 allowEmptyArchive: true,
                 fingerprint: true,
                 onlyIfSuccessful: true
