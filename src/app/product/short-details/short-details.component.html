@@ -1,6 +1,6 @@
-<div class="card mt-4">
+<div class="card short-details mt-4">
     <img src="../../../assets/images/{{product.image}}.jpg" height="350" class="card-img-top" alt="...">
-    <div class="card-body">
+    <div class="card-body" (click)="goToProduct(product.id)">
         <div class="card-title mb-0 pb-2">{{product.brand}}</div>
         <div class="card-text pb-2">{{product.name}}</div>
         <div class="card-text pb-2"><ngb-rating [rate]="product.rating" [readonly]="true" [max]="5" /></div>

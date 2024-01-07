@@ -9,4 +9,8 @@ import { IProduct } from '../models/IProduct';
 export class ShortDetailsComponent {
   @Input()
   product!: IProduct;
+
+  goToProduct(productId: string) {
+    console.log(productId);
+  }
 }

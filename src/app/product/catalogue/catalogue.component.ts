@@ -10,6 +10,7 @@ import { IProduct } from '../models/IProduct';
 export class CatalogueComponent implements OnInit {
   products: IProduct[] = [
     {
+      id: '1',
       name: 'Plain Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -19,6 +20,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image8'
     },
     {
+      id: '2',
       name: 'Printed Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -28,6 +30,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image9'
     },
     {
+      id: '3',
       name: 'Printed Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -37,6 +40,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image10'
     },
     {
+      id: '4',
       name: 'Printed Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -46,6 +50,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image11'
     },
     {
+      id: '5',
       name: 'Plain Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -55,6 +60,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image12'
     },
     {
+      id: '6',
       name: 'Printed Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -64,6 +70,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image13'
     },
     {
+      id: '7',
       name: 'Printed Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -73,6 +80,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image14'
     },
     {
+      id: '8',
       name: 'Plain Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -82,6 +90,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image15'
     },
     {
+      id: '9',
       name: 'Printed Cotton T-Shirt',
       price: 399,
       discount: 15,
@@ -91,6 +100,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image16'
     },
     {
+      id: '10',
       name: 'Plain Cotton T-Shirt',
       price: 1399,
       discount: 15,
@@ -100,6 +110,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image17'
     },
     {
+      id: '11',
       name: 'Plain Cotton T-Shirt',
       price: 2999,
       discount: 15,
@@ -109,6 +120,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image18'
     },
     {
+      id: '12',
       name: 'Printed Cotton T-Shirt',
       price: 599,
       discount: 15,
@@ -118,6 +130,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image19'
     },
     {
+      id: '13',
       name: 'Plain Cotton T-Shirt',
       price: 1299,
       discount: 15,
@@ -127,6 +140,7 @@ export class CatalogueComponent implements OnInit {
       image: 'image20'
     },
     {
+      id: '14',
       name: 'Plain Cotton T-Shirt',
       price: 2199,
       discount: 15,
@@ -137,6 +151,7 @@ export class CatalogueComponent implements OnInit {
     }
   ]
 
+  category: string = ''
   filteredProducts: IProduct[] = [];
 
   constructor(private activateRoute: ActivatedRoute) { }
@@ -144,7 +159,7 @@ export class CatalogueComponent implements OnInit {
   ngOnInit(): void {
     this.activateRoute.params.subscribe(params => {
       const category = params['category'];
-      if (category) {
+      if (category !== this.category) {
         this.filteredProducts = this.products.filter(x => x.category.includes(category));
       }
     })

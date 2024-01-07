@@ -6,10 +6,10 @@
             <a class="navbar-brand" [routerLink]="'/home'">AmCart</a>
         </div>
         <div class="collapse navbar-collapse justify-content-center" [ngbCollapse]="isMenuCollapsed">
-            <ul ngbNav [activeId]="route.fragment | async" class="nav-links justify-content-center navbar-nav">
+            <ul ngbNav class="nav-links justify-content-center navbar-nav">
                 <li [ngbNavItem]="link.route" *ngFor="let link of links">
-                    <a ngbNavLink (mouseenter)="changeBorder($event, link.borderColor)" href=""
-                        (click)="isMenuCollapsed = !isMenuCollapsed"
+                    <a ngbNavLink (mouseenter)="changeBorder($event, link.borderColor)"
+                        (click)="isMenuCollapsed = true"
                         (mouseleave)="changeBorder($event, 'transparent')" [routerLink]="link.route">{{
                         link.name }}</a>
                 </li>

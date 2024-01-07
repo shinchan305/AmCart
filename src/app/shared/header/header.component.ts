@@ -19,7 +19,7 @@ export class HeaderComponent {
 
   isMenuCollapsed: boolean = true;
 
-  constructor(public route: ActivatedRoute) {}
+  constructor() {}
 
   changeBorder(e: any, color: string) {
     e.target.style.borderBottom = `3px solid ${color}`
