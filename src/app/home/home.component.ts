@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     console.log(this.images);
     console.log("Test message");
+    console.log("Another Test message");
   }
 
   onSlide(e: any) {
