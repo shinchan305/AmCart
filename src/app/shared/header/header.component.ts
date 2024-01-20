@@ -13,7 +13,7 @@ export class HeaderComponent {
     { name: 'Popular', route: '/catalogue/popular', borderColor: '#f26a10' },
     { name: 'Sale', route: '/catalogue/sale', borderColor: '#f2c210' },
     { name: 'Blog', route: '/blog', borderColor: '#0db7af' },
-    { name: 'Contacts Us', route: '/contact-us', borderColor: '#ff3f6c' },
+    { name: 'Contact Us', route: '/contact-us', borderColor: '#ff3f6c' },
   ]
 
   isMenuCollapsed: boolean = true;
