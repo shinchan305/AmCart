@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BreadCrumbComponent } from './bread-crumb.component';
@@ -8,7 +9,8 @@ describe('BreadCrumbComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BreadCrumbComponent ]
+      declarations: [ BreadCrumbComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
 
@@ -18,6 +20,7 @@ describe('BreadCrumbComponent', () => {
   });
 
   it('should create', () => {
+    component.routes = ['test'];
     expect(component).toBeTruthy();
   });
 });
