@@ -31,4 +31,5 @@ export class CatalogueComponent implements OnInit {
       })
     }, err => console.log(err))
   }
+  
 }
