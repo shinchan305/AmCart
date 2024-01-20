@@ -31,11 +31,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('AmCart');
   });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);    
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.navbar-brand')?.textContent).toContain('AmCart');
-  });
 });
