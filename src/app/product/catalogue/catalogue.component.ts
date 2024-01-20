@@ -13,8 +13,9 @@ export class CatalogueComponent implements OnInit {
 
   category: string = ''
   filteredProducts: IProduct[] = [];
+  breadcrumbs: string[] = [];
 
-  constructor(private activateRoute: ActivatedRoute, private _productService: ProductService) { }
+  constructor(private activateRoute: ActivatedRoute, private _productService: ProductService, private _router: Router) { }
 
   ngOnInit(): void {
     this.getProducts();    
@@ -25,6 +26,7 @@ export class CatalogueComponent implements OnInit {
       this.products = response.products;
       this.activateRoute.params.subscribe(params => {
         const category = params['category'];
+            this.calculateBreadcrumbs();
         if (category !== this.category) {
           this.filteredProducts = this.products.filter(x => x.categories.split(',').includes(category));
         }
@@ -32,4 +34,10 @@ export class CatalogueComponent implements OnInit {
     }, err => console.log(err))
   }
   
+
+  private calculateBreadcrumbs() {
+    this.breadcrumbs = [];
+    const routes = this._router.url.split('/');
+    this.breadcrumbs.push(routes.slice(1).join(' '));
+  }
 }

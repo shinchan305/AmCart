@@ -1,5 +1,11 @@
+@import "../../../assets/sass/variables";
+
 .short-details {
     .card-body {
         cursor: pointer;
+
+        .discount {
+            color: $discount-color;
+        }
     }
 }

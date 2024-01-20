@@ -13,4 +13,8 @@ export class ShortDetailsComponent {
   goToProduct(productId: string) {
     console.log(productId);
   }
+
+  changeClass() {
+    
+  }
 }

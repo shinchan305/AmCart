@@ -36,7 +36,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     HttpClientModule,
     HeaderComponent,
     FooterComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    BreadCrumbComponent
   ]
 })
 export class SharedModule { }

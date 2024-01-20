@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { IHeaderLinks } from '../models/IHeaderLinks';
 
 @Component({
