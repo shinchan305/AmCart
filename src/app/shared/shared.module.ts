@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
+
 import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { FooterComponent } from './footer/footer.component';
@@ -25,11 +27,13 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
   imports: [
     CommonModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   exports: [
     CommonModule,
     NgbModule,
+    HttpClientModule,
     HeaderComponent,
     FooterComponent,
     SafeHtmlPipe
