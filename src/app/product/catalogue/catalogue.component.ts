@@ -31,7 +31,7 @@ export class CatalogueComponent implements OnInit {
         if (category !== this.category || subCategory) {
           this.filteredProducts = this.products.filter(x => x.categories.split(',').includes(category));
           if (subCategory) {
-            this.filteredProducts = this.filteredProducts.filter(x => x.categories.split(',').includes(subCategory.toLowerCase()));
+            this.filteredProducts = this.filteredProducts.filter(x => x.categories.some(y => subCategory.toLowerCase().indexOf(y) >= 0));
           }
         }
       })
