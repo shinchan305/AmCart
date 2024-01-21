@@ -13,7 +13,7 @@ export class CatalogueComponent implements OnInit {
 
   category: string = ''
   filteredProducts: IProduct[] = [];
-  breadcrumbs: string[] = [];
+  breadcrumbs: any[] = [];
 
   constructor(private activateRoute: ActivatedRoute, private _productService: ProductService, private _router: Router) { }
 
@@ -26,9 +26,13 @@ export class CatalogueComponent implements OnInit {
       this.products = response.products;
       this.activateRoute.params.subscribe(params => {
         const category = params['category'];
+           const subCategory = params['subCategory'];
             this.calculateBreadcrumbs();
-        if (category !== this.category) {
+        if (category !== this.category || subCategory) {
           this.filteredProducts = this.products.filter(x => x.categories.split(',').includes(category));
+          if (subCategory) {
+            this.filteredProducts = this.filteredProducts.filter(x => x.categories.split(',').includes(subCategory.toLowerCase()));
+          }
         }
       })
     }, err => console.log(err))
@@ -37,7 +41,13 @@ export class CatalogueComponent implements OnInit {
 
   private calculateBreadcrumbs() {
     this.breadcrumbs = [];
-    const routes = this._router.url.split('/');
-    this.breadcrumbs.push(routes.slice(1).join(' '));
+    const routes = decodeURIComponent(this._router.url).split('/');
+    if (routes.length === 4) {
+      this.breadcrumbs.push({ route: '/' + routes.slice(1, 3).join('/'), name: routes.slice(1, 3).join(' ') });
+      this.breadcrumbs.push({route: '', name: routes[3]});
+    }
+    else {
+      this.breadcrumbs.push({route: '', name: routes.slice(1).join(' ')});
+    }
   }
 }

@@ -8,8 +8,32 @@ import { IHeaderLinks } from '../models/IHeaderLinks';
 })
 export class HeaderComponent {
   links: IHeaderLinks[] = [
-    { name: 'Men', route: '/catalogue/men', borderColor: '#ee5f73' },
-    { name: 'Women', route: '/catalogue/women', borderColor: '#fb56c1' },
+    {
+      name: 'Men', route: '/catalogue/men', borderColor: '#ee5f73', content: {
+        Clothing: ["T-Shirts", "Casual Shirts", "Formal Shirts", "Suits", "Jeans", "Casual Trousers", "Formal Trousers", "Shorts", "Track Pants",
+          "Sweaters & Sweatshirts", "Jackets", "Blazers & Coats", "Sports & Active Wear", "Indian & Festive Wear", "Innerwear & Sleepwear"],
+        ACCESSORIES: ["Watches & Wearables", "Sunglasses & Frames", "Bags & Backpacks", "Luggage & Trolleys", "Personal Care & Grooming", "Wallets & Belts",
+          "Fashion Accessories"]
+      }
+    },
+    {
+      name: 'Women', route: '/catalogue/women', borderColor: '#fb56c1', content: {
+        "Indian & Western Wear": ["Kurtas & Suits", "Kurtis & Tunics", "Leggings, Salwars & Churidars", "Skirts & Palazzos", "Sarees & Blouses",
+          "Dress Material", "Lehenga Choli", "Dupattas & Shawls"],
+        "Western Wear": ["Dresses & Jumpsuits", "Tops, T-Shirts & Shirts", "Jeans & Jeggings", "Trousers & Capris", "Shorts & Skirts", "Shrugs", "Sweaters & Sweatshirts",
+          "Jackets & Waistcoats", "Coats & Blazers"],
+        "Accessories": [
+          "Women Watches",
+          "Analog",
+          "Chronograph",
+          "Digital",
+          "Analog & Digital",
+          "Sunglasses",
+          "Eye Glasses",
+          "Belt",
+        ]
+      }
+    },
     { name: 'Popular', route: '/catalogue/popular', borderColor: '#f26a10' },
     { name: 'Sale', route: '/catalogue/sale', borderColor: '#f2c210' },
     { name: 'Blog', route: '/blog', borderColor: '#0db7af' },
@@ -18,9 +42,16 @@ export class HeaderComponent {
 
   isMenuCollapsed: boolean = true;
 
-  constructor() {}
+  constructor() { }
 
-  changeBorder(e: any, color: string) {
-    e.target.style.borderBottom = `3px solid ${color}`
+  changeBorder(e: any, color: string, p: any) {    
+    const target = e.target.firstChild as HTMLElement;
+    target.style.borderBottom = `3px solid ${color}`;
+    if (color === 'transparent') {
+      p.close();      
+    }
+    else {
+      p.open();
+    }
   }
 }

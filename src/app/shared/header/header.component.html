@@ -3,15 +3,20 @@
         <div>
             <button class="navbar-toggler me-2" type="button"
                 (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
-            <a class="navbar-brand" [routerLink]="'/home'"><img src="../../../assets/images/logo.png" height="75" alt=""></a>
+            <a class="navbar-brand" [routerLink]="'/home'"><img src="../../../assets/images/logo.png" height="75"
+                    alt=""></a>
         </div>
         <div class="collapse navbar-collapse justify-content-center" [ngbCollapse]="isMenuCollapsed">
             <ul ngbNav class="nav-links justify-content-center navbar-nav">
-                <li [ngbNavItem]="link.route" *ngFor="let link of links">
-                    <a ngbNavLink (mouseenter)="changeBorder($event, link.borderColor)"
-                        (click)="isMenuCollapsed = true"
-                        (mouseleave)="changeBorder($event, 'transparent')" [routerLink]="link.route">{{
-                        link.name }}</a>
+                <li [ngbNavItem]="link.route" *ngFor="let link of links" (mouseleave)="changeBorder($event, 'transparent', p)" (mouseenter)="changeBorder($event, link.borderColor, p)">
+                    <a ngbNavLink [ngbPopover]="popContent" #p="ngbPopover"
+                        placement="bottom" [disablePopover]="!link.content" (click)="isMenuCollapsed = true"                        
+                        [routerLink]="link.route">
+                        <ng-template #popContent>
+                            <app-popover-content [content]="link.content" [headerColor]="link.borderColor" [route]="link.route"></app-popover-content>
+                        </ng-template>
+                        {{link.name }}
+                    </a>
                 </li>
             </ul>
         </div>

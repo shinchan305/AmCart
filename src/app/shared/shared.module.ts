@@ -12,6 +12,7 @@ import { SearchComponent } from './search/search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { PropertiesPipe } from './pipes/properties-pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     PaginatorComponent,
     PopoverContentComponent,
     SearchComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    PropertiesPipe
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     HeaderComponent,
     FooterComponent,
     SafeHtmlPipe,
-    BreadCrumbComponent
+    BreadCrumbComponent,
+    PropertiesPipe
   ]
 })
 export class SharedModule { }

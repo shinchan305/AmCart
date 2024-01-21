@@ -5,11 +5,16 @@
     <div>
         /
     </div>
-    <div>
-        <span class="text-capitalize" [style.font-family]="i === routes.length - 1 ? 'OpenSans-SemiBold' : 'OpenSans-Regular'"
-        *ngFor="let route of routes; let i = index">
-            {{route}}
-            <span *ngIf="i !== routes.length - 1">/</span>
-        </span>
+    <div class="d-flex gap-1">
+        <div class="text-capitalize d-flex gap-1"
+            [style.font-family]="i === routes.length - 1 ? 'OpenSans-SemiBold' : 'OpenSans-Regular'"
+            *ngFor="let route of routes; let i = index">
+            <a class="text-decoration-none text-dark" [routerLink]="route.route"
+                *ngIf="i !== routes.length - 1">
+                {{route.name}}
+            </a>
+            <div *ngIf="i === routes.length - 1">{{route.name}}</div>
+            <div *ngIf="i !== routes.length - 1">/</div>
+        </div>
     </div>
 </div>

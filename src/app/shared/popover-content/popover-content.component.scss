@@ -1,0 +1,9 @@
+a {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        // font-family: 'OpenSans-SemiBold';
+        text-decoration: underline;
+    }
+}

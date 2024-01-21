@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-popover-content',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./popover-content.component.scss']
 })
 export class PopoverContentComponent {
+  @Input()
+  content: any;
 
+  @Input()
+  headerColor: string = '';
+
+  @Input()
+  route: string = '';
 }
