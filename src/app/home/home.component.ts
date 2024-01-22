@@ -11,10 +11,6 @@ export class HomeComponent implements OnInit {
   pauseOnFocus: boolean = false;
 
   ngOnInit() {
-    console.log(this.images);
-    console.log("Test message");
-    console.log("Another Test message");
-    console.log("Another Test message 123");
   }
 
   onSlide(e: any) {
