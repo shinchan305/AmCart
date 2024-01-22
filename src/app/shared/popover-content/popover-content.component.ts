@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-popover-content',
@@ -12,6 +12,12 @@ export class PopoverContentComponent {
   @Input()
   headerColor: string = '';
 
-  @Input()
-  route: string = '';
+  @Output()
+  subcategorySelected: EventEmitter<string> = new EventEmitter();
+
+  selectSubCategory(category: string) {
+    if (category) {
+      this.subcategorySelected.emit(category);
+    }
+  }
 }

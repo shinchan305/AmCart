@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IHeaderLinks } from '../models/IHeaderLinks';
 
 @Component({
@@ -42,7 +43,7 @@ export class HeaderComponent {
 
   isMenuCollapsed: boolean = true;
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   changeBorder(e: any, color: string, p: any) {    
     const target = e.target.firstChild as HTMLElement;
@@ -53,5 +54,12 @@ export class HeaderComponent {
     else {
       p.open();
     }
+  }
+
+  handleSubcategory(subCategory: string, listItem: any, parentRoute: string) {
+    const mouseleaveEvent = new Event('mouseleave');
+    listItem.dispatchEvent(mouseleaveEvent);
+
+    this._router.navigateByUrl('/' + parentRoute + '/' + subCategory);
   }
 }

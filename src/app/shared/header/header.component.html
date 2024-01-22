@@ -8,12 +8,12 @@
         </div>
         <div class="collapse navbar-collapse justify-content-center" [ngbCollapse]="isMenuCollapsed">
             <ul ngbNav class="nav-links justify-content-center navbar-nav">
-                <li [ngbNavItem]="link.route" *ngFor="let link of links" (mouseleave)="changeBorder($event, 'transparent', p)" (mouseenter)="changeBorder($event, link.borderColor, p)">
+                <li [ngbNavItem]="link.route" *ngFor="let link of links" #listItem (mouseleave)="changeBorder($event, 'transparent', p)" (mouseenter)="changeBorder($event, link.borderColor, p)">
                     <a ngbNavLink [ngbPopover]="popContent" #p="ngbPopover"
                         placement="bottom" [disablePopover]="!link.content" (click)="isMenuCollapsed = true"                        
                         [routerLink]="link.route">
                         <ng-template #popContent>
-                            <app-popover-content [content]="link.content" [headerColor]="link.borderColor" [route]="link.route"></app-popover-content>
+                            <app-popover-content [content]="link.content" [headerColor]="link.borderColor" (subcategorySelected)="handleSubcategory($event, listItem, link.route)"></app-popover-content>
                         </ng-template>
                         {{link.name }}
                     </a>
