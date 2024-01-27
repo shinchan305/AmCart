@@ -28,7 +28,7 @@ describe('ShortDetailsComponent', () => {
       categories: ['women','black','tshirt'],
       brand: 'Peter England',
       rating: 3,
-      image: 'image21'
+      images: ["image21"]
     };
     fixture.detectChanges();
     expect(component).toBeTruthy();
