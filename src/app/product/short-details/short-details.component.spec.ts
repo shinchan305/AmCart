@@ -28,7 +28,8 @@ describe('ShortDetailsComponent', () => {
       brand: 'Peter England',
       rating: 3,
       images: ["image21"],
-      isWishlisted: false
+      isWishlisted: false,
+      isAvailable: true
     };
     fixture.detectChanges();
     expect(component).toBeTruthy();
