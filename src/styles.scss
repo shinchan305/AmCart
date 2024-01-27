@@ -14,6 +14,11 @@
     src: url('./assets/fonts/OpenSans-SemiBold.ttf');
 }
 
+@font-face {
+    font-family: 'Opensans-Bold';
+    src: url('./assets/fonts/OpenSans-Bold.ttf');
+}
+
 body {
     font-family: 'Opensans-Regular', sans-serif;
     font-size: 13px;
@@ -64,4 +69,8 @@ h6 {
 
 .popover{
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
+}
+
+.discount {
+    color: $discount-color;
 }

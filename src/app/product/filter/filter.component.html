@@ -1,7 +1,7 @@
 <div *ngFor="let filter of filters" class="mt-4 ">
     <h6>{{filter.category}}</h6>
     <div class="form-check" *ngFor="let item of filter.items; let i = index">
-        <input class="form-check-input" type="checkbox" value="" id="{{filter.category + i}}">
+        <input class="form-check-input" type="checkbox" (change)="filterChange($event, filter, item)" value="" id="{{filter.category + i}}">
         <label class="form-check-label" for="{{filter.category + i}}" [innerHTML]="item.value | safeHtml">
         </label>
     </div>

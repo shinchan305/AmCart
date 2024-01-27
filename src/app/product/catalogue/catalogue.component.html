@@ -11,7 +11,7 @@
 
 <div class="row border-bottom pb-3">
     <div class="col-md-2 col-sm-4 col-12">
-        <app-filter></app-filter>
+        <app-filter (sendFilter)="handleFilter($event)"></app-filter>
     </div>
     <div class="col-md-10 col-sm-8 col-12">
         <div class="row">

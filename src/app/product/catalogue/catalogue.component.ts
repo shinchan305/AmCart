@@ -9,10 +9,11 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent implements OnInit {
-  products: IProduct[] = []
+  products: IProduct[] = [];
 
   category: string = ''
   filteredProducts: IProduct[] = [];
+  partiallyFilteredProducts: IProduct[] = [];
   breadcrumbs: any[] = [];
 
   constructor(private activateRoute: ActivatedRoute, private _productService: ProductService, private _router: Router) { }
@@ -29,25 +30,14 @@ export class CatalogueComponent implements OnInit {
         const subCategory = params['subCategory'];
         this.calculateBreadcrumbs();
         if (category !== this.category || subCategory) {
-          this.filteredProducts = this.products.filter(x => x.categories.split(',').includes(category));
+          this.filteredProducts = this.products.filter(x => x.categories.includes(category));
           if (subCategory) {
-            this.filteredProducts = this.filteredProducts.filter(x => x.categories.split(',').some(y => subCategory.toLowerCase().indexOf(y) >= 0)); 
+            this.filteredProducts = this.filteredProducts.filter(x => x.categories.some(y => subCategory.toLowerCase().indexOf(y) >= 0)); 
           }
+          this.partiallyFilteredProducts = JSON.parse(JSON.stringify(this.filteredProducts));
         }
       })
-    }, err => console.log(err))
-
-    // this.activateRoute.params.subscribe(params => {
-    //   const category = params['category'];
-    //   const subCategory = params['subCategory'];
-    //   this.calculateBreadcrumbs();
-    //   if (category !== this.category || subCategory) {
-    //     this.filteredProducts = this.products.filter(x => x.categories.includes(category));
-    //     if (subCategory) {
-    //       this.filteredProducts = this.filteredProducts.filter(x => x.categories.some(y => subCategory.toLowerCase().indexOf(y) >= 0));
-    //     }
-    //   }
-    // })
+    }, err => console.log(err))    
   }
 
 
@@ -60,6 +50,19 @@ export class CatalogueComponent implements OnInit {
     }
     else {
       this.breadcrumbs.push({ route: '', name: routes.slice(1).join(' ') });
+    }
+  }
+
+  handleFilter(filter: any) {
+    if (filter && Object.keys(filter).length) {
+      Object.keys(filter).forEach((key) => {
+        if (filter[key].length) {
+          this.filteredProducts = JSON.parse(JSON.stringify(this.partiallyFilteredProducts.filter((x: any) => filter[key].includes(x[key.toLowerCase()]))));
+        }
+        else {
+          this.filteredProducts = JSON.parse(JSON.stringify(this.partiallyFilteredProducts.filter((x: any) => x[key.toLowerCase()])));
+        }
+      })
     }
   }
 }

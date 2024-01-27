@@ -1,17 +1,25 @@
-<div class="card short-details mt-4" style="width: 95%;">
-    <img src="../../../assets/images/{{product.image}}.jpg" height="320" class="card-img-top" alt="...">
-    <div class="card-body" (click)="goToProduct(product.id)">
-        <div class="card-title mb-0 pb-2"><h6>{{product.brand}}</h6></div>
+<div class="card short-details mt-4" style="width: 95%;" (click)="goToProduct(product.id)">
+    <img src="../../../assets/images/{{product.images[0]}}" height="320" class="card-img-top" alt="...">
+    <div class="card-body">
+        <div class="card-title mb-0 pb-2">
+            <h6>{{product.brand}}</h6>
+        </div>
         <div class="card-text pb-2">{{product.name}}</div>
-        <div class="card-text pb-2"><ngb-rating [rate]="product.rating" [readonly]="true" [max]="5" /></div>
+        <div class="card-text pb-2">
+            <ngb-rating [rate]="product.rating" [readonly]="true" [max]="5" />
+        </div>
         <div class="d-flex justify-content-between">
             <div>
                 <span class="card-text">{{product.price | currency: 'INR':'symbol':'0.0-0'}}</span> &nbsp;
                 <span *ngIf="product.discount" class="discount">({{product.discount}}% Off)</span>
             </div>
             <div class="d-flex gap-2">
-                <a href=""><h6><i class="bi bi-heart"></i></h6></a>
-                <a href=""><h6><i class="bi bi-eye"></i></h6></a>
+                <a href="">
+                    <h6><i class="bi bi-heart"></i></h6>
+                </a>
+                <a href="">
+                    <h6><i class="bi bi-eye"></i></h6>
+                </a>
             </div>
         </div>
     </div>

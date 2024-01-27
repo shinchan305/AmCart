@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -10,15 +10,15 @@ export class FilterComponent {
     {
       category: 'Brand',
       items: [{
-        id: 'nike',
+        id: 'Nike',
         value: 'Nike'
       },
       {
-        id: 'puma',
+        id: 'Puma',
         value: 'Puma'
       },
       {
-        id: 'adidas',
+        id: 'Adidas',
         value: 'Adidas'
       },
       {
@@ -36,7 +36,16 @@ export class FilterComponent {
       {
         id: 'Roadster',
         value: 'Roadster'
-      }]
+      },
+      {
+        id: 'MANGO',
+        value: 'MANGO'
+      },
+      {
+        id: "Mast & Harbour",
+        value: "Mast & Harbour"
+      }
+      ]
     },
     {
       category: 'Price',
@@ -114,4 +123,31 @@ export class FilterComponent {
       ]
     }
   ]
+
+  selectedFilter: any = {};
+
+  @Output()
+  sendFilter: EventEmitter<any[]> = new EventEmitter();
+
+  filterChange(e: any, filter: any, item: any) {
+    if (!this.selectedFilter[filter.category]) {
+      this.selectedFilter[filter.category] = [];
+    }
+
+    if (e.target.checked) {
+      if (item.id && !this.selectedFilter[filter.category].some((x: any) => x === item.id)) {
+        this.selectedFilter[filter.category].push(item.id);
+      }
+    }
+    else {
+      const index = this.selectedFilter[filter.category].indexOf(item.id);
+      this.selectedFilter[filter.category].splice(index, 1);
+    }
+
+    this.applyFilter();
+  }
+
+  applyFilter() {
+    this.sendFilter.emit(this.selectedFilter);
+  }
 }

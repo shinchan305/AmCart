@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'catalogue/:category/:subCategory', loadChildren: () => import('./product/product.module').then((m) => m.ProductModule) },
   { path: 'catalogue/:category', loadChildren: () => import('./product/product.module').then((m) => m.ProductModule) },
   { path: 'catalogue', loadChildren: () => import('./product/product.module').then((m) => m.ProductModule) },
+  { path: 'product-details/:id', loadChildren: () => import('./product-details/product-details.module').then((m) => m.ProductDetailsModule) },
   { path: 'contact-us', loadChildren: () => import('./contact-us/contact-us.module').then((m) => m.ContactUsModule) },
 ];
 

@@ -25,7 +25,7 @@ describe('ShortDetailsComponent', () => {
       name: 'Plain Cotton T-Shirt',
       price: 2199,
       discount: 15,
-      categories: 'women,black,tshirt',
+      categories: ['women','black','tshirt'],
       brand: 'Peter England',
       rating: 3,
       image: 'image21'

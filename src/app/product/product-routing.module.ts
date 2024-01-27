@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'catalogue/:category/:subCategory', component: CatalogueComponent },
   { path: 'catalogue/:category', component: CatalogueComponent },
   { path: 'catalogue', component: CatalogueComponent },
+
   { path: '', component: CatalogueComponent },
 ];
 

@@ -1,0 +1,39 @@
+@import '../../assets/sass/variables';
+
+.product-name {
+    opacity: 0.6;
+}
+
+.btn-wrapper {
+    .bag {
+        background-color: $theme-color-pink;
+        color: $white-color;
+        text-transform: uppercase;
+        font-family: 'OpenSans-Bold';
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        .bi-bag {
+            color: $white-color;
+        }
+    }
+
+    .wishlist {
+        text-transform: uppercase;
+        font-family: 'OpenSans-Bold';
+        border: 1px solid $black-color;
+
+        &:hover {
+            border: 1px solid $black-color !important;
+        }
+    }
+
+    .size {
+        font-family: 'OpenSans-Bold';
+        &:hover {
+            border: 1px solid $black-color !important;
+        }
+    }
+}
