@@ -6,5 +6,6 @@ export interface IProduct {
     categories: string[],
     brand: string,
     rating: number,
-    images: string[]
+    images: string[],
+    isWishlisted: boolean
 }

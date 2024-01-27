@@ -28,7 +28,8 @@ describe('ShortDetailsComponent', () => {
       categories: ['women','black','tshirt'],
       brand: 'Peter England',
       rating: 3,
-      images: ["image21"]
+      images: ["image21"],
+      isWishlisted: false
     };
     fixture.detectChanges();
     expect(component).toBeTruthy();

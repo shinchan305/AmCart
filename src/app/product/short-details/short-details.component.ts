@@ -20,6 +20,21 @@ export class ShortDetailsComponent {
     this._router.navigateByUrl('/product-details/' + productId);
   }
 
+  addToWishlist(product: IProduct, heart: any) {
+    const heartHTML = heart as HTMLAreaElement;
+    product.isWishlisted = !product.isWishlisted;
+    if (product.isWishlisted) {
+      heartHTML.classList.remove('bi-heart');
+      heartHTML.classList.add('bi-heart-fill');
+      heartHTML.style.color = 'red';
+    }
+    else {
+      heartHTML.classList.remove('bi-heart-fill');
+      heartHTML.classList.add('bi-heart');
+      heartHTML.style.color = '';
+    }
+  }
+
   changeClass() {
     
   }
