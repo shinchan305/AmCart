@@ -11,7 +11,8 @@
         text-transform: uppercase;
         font-family: 'OpenSans-Bold';
 
-        &:hover, &:disabled {
+        &:hover,
+        &:disabled {
             opacity: 0.8;
         }
 
@@ -26,14 +27,35 @@
         border: 1px solid $black-color;
 
         &:hover {
-            border: 1px solid $black-color !important;
+            border: 1px solid $black-color  !important;
         }
     }
 
     .size {
         font-family: 'OpenSans-Bold';
+
         &:hover {
-            border: 1px solid $black-color !important;
+            border: 1px solid $black-color  !important;
+        }
+    }
+}
+
+.image-row {
+    overflow: hidden;
+    cursor: pointer;
+
+    .image-container {
+        height: auto;
+        overflow: hidden;
+
+        img {
+            transition: transform .8s;
+            z-index: -1;
+
+            &:hover {
+                transform: scale(1.05);
+                /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
         }
     }
 }
