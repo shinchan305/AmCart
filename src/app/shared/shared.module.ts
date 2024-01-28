@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { PropertiesPipe } from './pipes/properties-pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PropertiesPipe } from './pipes/properties-pipe';
     CommonModule,
     NgbModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     CommonModule,
@@ -40,7 +42,9 @@ import { PropertiesPipe } from './pipes/properties-pipe';
     FooterComponent,
     SafeHtmlPipe,
     BreadCrumbComponent,
-    PropertiesPipe
+    PropertiesPipe,
+    FormsModule,
+    PaginatorComponent
   ]
 })
 export class SharedModule { }

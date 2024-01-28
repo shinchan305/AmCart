@@ -67,10 +67,59 @@ h6 {
     }
 }
 
-.popover{
-    max-width: 100%; /* Max Width of the popover (depending on the container!) */
+.popover {
+    max-width: 100%;
+    /* Max Width of the popover (depending on the container!) */
 }
 
 .discount {
     color: $discount-color;
+}
+
+.pagination-custom {
+    list-style: none;
+    text-align: center;
+    padding-top: 24px;
+    padding-bottom: 60px;
+    color: #282c3f;
+
+    >li {
+        display: inline-block;
+        margin-right: 9px;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 6px 8px;
+        border-radius: 2px;
+        border: none;
+
+        &:hover {
+            background: none;
+        }
+
+        &.active {
+            .page-link {
+                background-color: $black-color;
+            }
+        }
+
+        &.disabled {
+            border-radius: none;
+            .page-link {
+                background: none;
+                border-radius: none;
+            }
+        }
+
+        a {
+            border: none !important;
+            text-decoration: none;
+            color: $black-color;
+
+            &:hover {
+                border: 1px solid $black-color;
+                color: $black-color;
+                background-color: white;
+            }
+        }
+    }
 }

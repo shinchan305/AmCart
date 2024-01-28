@@ -11,35 +11,54 @@ import { ProductService } from '../services/product.service';
 export class CatalogueComponent implements OnInit {
   products: IProduct[] = [];
 
-  category: string = ''
+  searchTerm: string = ''
   filteredProducts: IProduct[] = [];
   partiallyFilteredProducts: IProduct[] = [];
   breadcrumbs: any[] = [];
+  totalRecords: number = 0;
+  page: number = 0;
 
   constructor(private activateRoute: ActivatedRoute, private _productService: ProductService, private _router: Router) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.activateRoute.params.subscribe(params => {
+      this.page = 0;
+      const category = params['category'];
+      let subCategory = params['subCategory'];
+      subCategory = this.getSubcategory(subCategory);
+      if (category === 'men' || category === 'women') {
+        this.searchTerm = subCategory ? `category=${category}&subCategory=${subCategory}` : `category=${category}`;
+      }
+      else {
+        this.searchTerm = `query=${subCategory}`;
+      }
+      this.getProducts(0);
+    })
   }
 
-  getProducts() {
-    this._productService.getProducts().subscribe((response: any) => {
-      this.products = response.products;
-      this.activateRoute.params.subscribe(params => {
-        const category = params['category'];
-        const subCategory = params['subCategory'];
-        this.calculateBreadcrumbs();
-        if (category !== this.category || subCategory) {
-          this.filteredProducts = this.products.filter(x => x.categories.includes(category));
-          if (subCategory) {
-            this.filteredProducts = this.filteredProducts.filter(x => x.categories.some(y => subCategory.toLowerCase().indexOf(y) >= 0)); 
-          }
-          this.partiallyFilteredProducts = JSON.parse(JSON.stringify(this.filteredProducts));
-        }
-      })
-    }, err => console.log(err))    
+  getProducts(pageNumber: number) {
+    this._productService.searchProduct(this.searchTerm, pageNumber * 10).subscribe((response: any) => {
+      this.filteredProducts = response.products;
+      this.totalRecords = response.totalRecords;
+      this.partiallyFilteredProducts = JSON.parse(JSON.stringify(this.filteredProducts));
+      this.calculateBreadcrumbs();
+      this.partiallyFilteredProducts = JSON.parse(JSON.stringify(this.filteredProducts));
+    })
   }
 
+
+  private getSubcategory(subCategory: string) {
+    if (subCategory && subCategory.includes('&')) {
+      subCategory = decodeURIComponent(subCategory);
+      let categories = subCategory.split(',');
+      let categryToBeModified = categories[categories.length - 1];
+      let modifiedCategories = categryToBeModified.split('&').map(x => x.trim());
+      categories.pop();
+      categories.push(...modifiedCategories);
+      subCategory = categories.join(',');
+    }
+    return subCategory;
+  }
 
   private calculateBreadcrumbs() {
     this.breadcrumbs = [];
@@ -64,5 +83,9 @@ export class CatalogueComponent implements OnInit {
         }
       })
     }
+  }
+
+  pageChanged(pageNumber: number) {
+    this.getProducts(pageNumber);
   }
 }

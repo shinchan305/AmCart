@@ -5,8 +5,8 @@
             "name": "Plain Cotton T-Shirt",
             "price": 399,
             "discount": 15,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "white",
                 "t-shirts",
                 "popular"
@@ -24,8 +24,8 @@
             "name": "Printed Cotton T-Shirt",
             "price": 399,
             "discount": 15,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "black",
                 "t-shirts",
                 "popular"
@@ -44,8 +44,8 @@
             "name": "Printed Cotton T-Shirt",
             "price": 399,
             "discount": 15,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "white",
                 "t-shirts"
             ],
@@ -61,8 +61,8 @@
             "id": "4",
             "name": "Printed Cotton T-Shirt",
             "price": 399,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "pink",
                 "t-shirts",
                 "popular"
@@ -80,8 +80,8 @@
             "name": "Plain Cotton T-Shirt",
             "price": 399,
             "discount": 15,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "white",
                 "t-shirts"
             ],
@@ -98,8 +98,8 @@
             "name": "Printed Cotton T-Shirt",
             "price": 399,
             "discount": 15,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "white",
                 "t-shirts",
                 "popular"
@@ -116,8 +116,8 @@
             "id": "7",
             "name": "Printed Cotton T-Shirt",
             "price": 399,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "black",
                 "t-shirts"
             ],
@@ -134,8 +134,8 @@
             "name": "Plain Cotton T-Shirt",
             "price": 399,
             "discount": 80,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "white",
                 "t-shirts"
             ],
@@ -151,8 +151,8 @@
             "id": "9",
             "name": "Printed Cotton T-Shirt",
             "price": 399,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "black",
                 "t-shirts",
                 "popular"
@@ -171,8 +171,8 @@
             "name": "Plain Cotton T-Shirt",
             "price": 1399,
             "discount": 15,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "white",
                 "t-shirts"
             ],
@@ -188,8 +188,8 @@
             "id": "11",
             "name": "Plain Cotton T-Shirt",
             "price": 2999,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "white",
                 "t-shirts"
             ],
@@ -206,8 +206,8 @@
             "name": "Printed Cotton T-Shirt",
             "price": 599,
             "discount": 15,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "white",
                 "t-shirts",
                 "popular"
@@ -225,8 +225,8 @@
             "name": "Plain Cotton T-Shirt",
             "price": 1299,
             "discount": 30,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "white",
                 "t-shirts"
             ],
@@ -244,8 +244,8 @@
             "name": "Plain Cotton T-Shirt",
             "price": 2199,
             "discount": 50,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "black",
                 "t-shirts"
             ],
@@ -263,8 +263,8 @@
             "name": "Satin Red Dress",
             "price": 2999,
             "discount": 10,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "red",
                 "dresses & jumpsuits",
                 "popular"
@@ -283,8 +283,8 @@
             "name": "Cotton Pink Dress",
             "price": 1399,
             "discount": 15,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "pink",
                 "dresses & jumpsuits"
             ],
@@ -302,8 +302,8 @@
             "name": "Cotton Light Pink Dress",
             "price": 1499,
             "discount": 30,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "light pink",
                 "dresses & jumpsuits",
                 "popular"
@@ -322,8 +322,8 @@
             "name": "Cotton Check Blue Shirt",
             "price": 1999,
             "discount": 30,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "blue",
                 "green",
                 "popular",
@@ -342,8 +342,8 @@
             "id": "19",
             "name": "Cotton Check black Shirt",
             "price": 1599,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "black",
                 "checks",
                 "gray",
@@ -362,8 +362,8 @@
             "id": "20",
             "name": "Cotton Check Blue Green Shirt",
             "price": 1499,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "blue",
                 "green",
                 "casual shirts"
@@ -382,8 +382,8 @@
             "name": "Cotton Check Light Blue Shirt",
             "price": 1499,
             "discount": 30,
+            "mainCategory": "men",
             "categories": [
-                "men",
                 "blue",
                 "light",
                 "casual shirts"
@@ -402,8 +402,8 @@
             "name": "Women Wide Leg Stretchable Jeans",
             "price": 2199,
             "discount": 50,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "black",
                 "jeans",
                 "stretchable"
@@ -422,8 +422,8 @@
             "name": "Navy Blue Stretchable Jeans",
             "price": 2399,
             "discount": 15,
+            "mainCategory": "women",
             "categories": [
-                "women",
                 "navy blue",
                 "jeans",
                 "stretchable",

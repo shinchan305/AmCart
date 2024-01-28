@@ -42,6 +42,7 @@ export class HeaderComponent {
   ]
 
   isMenuCollapsed: boolean = true;
+  searchTerm: string = '';
 
   constructor(private _router: Router) { }
 
@@ -61,5 +62,12 @@ export class HeaderComponent {
     listItem.dispatchEvent(mouseleaveEvent);
 
     this._router.navigateByUrl('/' + parentRoute + '/' + subCategory);
+  }
+
+  search(searchTerm: string) {
+    if (!searchTerm || searchTerm === '') {
+      return;
+    }
+    this._router.navigateByUrl(`/catalogue/search/${searchTerm}`);
   }
 }

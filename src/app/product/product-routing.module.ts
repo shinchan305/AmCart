@@ -5,6 +5,7 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 const routes: Routes = [
   { path: 'catalogue/:category/:subCategory', component: CatalogueComponent },
   { path: 'catalogue/:category', component: CatalogueComponent },
+  { path: 'catalogue/search/:query', component: CatalogueComponent },
   { path: 'catalogue', component: CatalogueComponent },
 
   { path: '', component: CatalogueComponent },

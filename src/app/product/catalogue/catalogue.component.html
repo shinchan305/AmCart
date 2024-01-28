@@ -19,5 +19,11 @@
                 <app-short-details [product]="p"></app-short-details>
             </div>
         </div>
+
+        <div class="row" *ngIf="totalRecords > 0">
+            <div class="col-12">
+                <app-paginator [totalRecords]="totalRecords" [page]="page" (sendCurrentPage)="pageChanged($event)"></app-paginator>
+            </div>
+        </div>
     </div>
 </div>
