@@ -1,83 +1,41 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent {
-  filters: any[] = [
-    {
-      category: 'Brand',
-      items: [{
-        id: 'Nike',
-        value: 'Nike'
-      },
-      {
-        id: 'Puma',
-        value: 'Puma'
-      },
-      {
-        id: 'Adidas',
-        value: 'Adidas'
-      },
-      {
-        id: 'Allen Solly',
-        value: 'Allen Solly'
-      },
-      {
-        id: 'Gucci',
-        value: 'Gucci'
-      },
-      {
-        id: 'Peter England',
-        value: 'Peter England'
-      },
-      {
-        id: 'Roadster',
-        value: 'Roadster'
-      },
-      {
-        id: 'MANGO',
-        value: 'MANGO'
-      },
-      {
-        id: "Mast & Harbour",
-        value: "Mast & Harbour"
-      }
-      ]
-    },
-    {
-      category: 'Price',
-      items: [
-        {
-          min: 100,
-          max: 499,
-          value: 'Rs 100 - Rs 499'
-        },
-        {
-          min: 500,
-          max: 999,
-          value: 'Rs 500 - Rs 999'
-        },
-        {
-          min: 1000,
-          max: 1999,
-          value: 'Rs 1000 - Rs 1999'
-        },
-        {
-          min: 2000,
-          max: 2999,
-          value: 'Rs 2000 - Rs 2999'
-        }
-      ]
-    }
-  ]
+export class FilterComponent implements OnInit, OnChanges {
+  @Input()
+  searchQuery: string = '';
+  
+  filters: any[] = [];
 
   selectedFilter: any = {};
 
   @Output()
   sendFilter: EventEmitter<any[]> = new EventEmitter();
+
+  constructor(private _productService: ProductService) { }
+
+  ngOnInit(): void {
+    this.getFilters();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['searchQuery'].currentValue !== this.searchQuery) {
+      setTimeout(() => {
+        this.getFilters();
+      }, 3000);
+    }
+  }
+
+  getFilters() {
+    this._productService.getFilters(this.searchQuery).subscribe((response: any) => {
+      this.filters = response.data.filters;
+    })
+  }
 
   filterChange(e: any, filter: any, item: any) {
     if (!this.selectedFilter[filter.category]) {

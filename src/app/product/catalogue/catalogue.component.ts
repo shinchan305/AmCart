@@ -21,11 +21,9 @@ export class CatalogueComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute, private _productService: ProductService, private _router: Router) { }
 
   ngOnInit(): void {
-    this.activateRoute.params.subscribe(params => {
-      this.filteredProducts = [];
+    this.activateRoute.params.subscribe(params => {      
       this.calculateBreadcrumbs();
-      this.page = 0;
-      this.totalRecords = 0;
+      this.resetData();
       const category = params['category'];
       let subCategory = params['subCategory'];
       subCategory = this.getSubcategory(subCategory);
@@ -39,8 +37,11 @@ export class CatalogueComponent implements OnInit {
     })
   }
 
-  getProducts(pageNumber: number) {
-    this._productService.searchProduct(this.searchTerm, pageNumber * 10).subscribe((response: any) => {
+  getProducts(pageNumber: number, searchQuery?: string) {
+    if (!searchQuery) {
+      searchQuery = this.searchTerm;
+    }
+    this._productService.searchProduct(searchQuery, pageNumber * 10).subscribe((response: any) => {      
       this.filteredProducts = response.products;
       this.totalRecords = response.totalRecords;
       this.partiallyFilteredProducts = JSON.parse(JSON.stringify(this.filteredProducts));
@@ -73,16 +74,27 @@ export class CatalogueComponent implements OnInit {
     }
   }
 
+  resetData() {
+    this.page = 0;
+    this.totalRecords = 0;
+    this.filteredProducts = [];
+  }
+
   handleFilter(filter: any) {
+    let searchQuery;
     if (filter && Object.keys(filter).length) {
       Object.keys(filter).forEach((key) => {
         if (filter[key].length) {
-          this.filteredProducts = JSON.parse(JSON.stringify(this.partiallyFilteredProducts.filter((x: any) => filter[key].includes(x[key.toLowerCase()]))));
+          const brands = `&brands=${filter[key].join(',')}`
+          this.resetData();
+          searchQuery = this.searchTerm + brands;          
         }
         else {
-          this.filteredProducts = JSON.parse(JSON.stringify(this.partiallyFilteredProducts.filter((x: any) => x[key.toLowerCase()])));
-        }
+          searchQuery = this.searchTerm;
+        }        
       })
+
+      this.getProducts(this.page, searchQuery);
     }
   }
 
