@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { PropertiesPipe } from './pipes/properties-pipe';
 import { FormsModule } from '@angular/forms';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     PopoverContentComponent,
     SearchComponent,
     SafeHtmlPipe,
-    PropertiesPipe
+    PropertiesPipe,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { FormsModule } from '@angular/forms';
     BreadCrumbComponent,
     PropertiesPipe,
     FormsModule,
-    PaginatorComponent
+    PaginatorComponent,
+    SpinnerComponent
   ]
 })
 export class SharedModule { }

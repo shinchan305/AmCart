@@ -8,9 +8,9 @@ export class ProductService {
 
   constructor(public _httpClient: HttpClient) { }
 
-  getProducts() {
-    // return this._httpClient.get("http://localhost:3000/products");
-    return this._httpClient.get("/assets/data/products.json");
+  getProductById(id: any) {
+    return this._httpClient.get(`http://localhost:3000/products/${id}`);
+    // return this._httpClient.get("/assets/data/products.json");
   }
 
   searchProduct(query: string, from: number) {
