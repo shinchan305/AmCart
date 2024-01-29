@@ -21,14 +21,14 @@ export class CatalogueComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute, private _productService: ProductService, private _router: Router) { }
 
   ngOnInit(): void {
-    this.activateRoute.params.subscribe(params => {      
+    this.activateRoute.params.subscribe(params => {
       this.calculateBreadcrumbs();
       this.resetData();
       const category = params['category'];
       let subCategory = params['subCategory'];
       subCategory = this.getSubcategory(subCategory);
       if (category === 'men' || category === 'women') {
-        this.searchTerm = subCategory ? `category=${category}&subCategory=${subCategory}` : `category=${category}`;
+        this.searchTerm = subCategory ? `mainCategory=${category}&categories=${subCategory}` : `mainCategory=${category}`;
       }
       else {
         this.searchTerm = `query=${subCategory}`;
@@ -41,7 +41,7 @@ export class CatalogueComponent implements OnInit {
     if (!searchQuery) {
       searchQuery = this.searchTerm;
     }
-    this._productService.searchProduct(searchQuery, pageNumber * 10).subscribe((response: any) => {      
+    this._productService.searchProduct(searchQuery, pageNumber * 10).subscribe((response: any) => {
       this.filteredProducts = response.products;
       this.totalRecords = response.totalRecords;
       this.partiallyFilteredProducts = JSON.parse(JSON.stringify(this.filteredProducts));
@@ -51,13 +51,9 @@ export class CatalogueComponent implements OnInit {
 
   private getSubcategory(subCategory: string) {
     if (subCategory && subCategory.includes('&')) {
+
       subCategory = decodeURIComponent(subCategory);
-      let categories = subCategory.split(',');
-      let categryToBeModified = categories[categories.length - 1];
-      let modifiedCategories = categryToBeModified.split('&').map(x => x.trim());
-      categories.pop();
-      categories.push(...modifiedCategories);
-      subCategory = categories.join(',');
+      subCategory = subCategory.replaceAll('&', '%26');
     }
     return subCategory;
   }
@@ -85,15 +81,16 @@ export class CatalogueComponent implements OnInit {
     if (filter && Object.keys(filter).length) {
       Object.keys(filter).forEach((key) => {
         if (filter[key].length) {
-          const brands = `&brands=${filter[key].join(',')}`
-          this.resetData();
-          searchQuery = this.searchTerm + brands;          
+          filter[key] = filter[key].map((x: string) => x.replaceAll('&', '%26'));
+          const brands = `&brand=${filter[key].join(',')}`
+          searchQuery = this.searchTerm + brands;
         }
         else {
-          searchQuery = this.searchTerm;
-        }        
-      })
 
+          searchQuery = this.searchTerm;
+        }
+      })
+      this.resetData();
       this.getProducts(this.page, searchQuery);
     }
   }

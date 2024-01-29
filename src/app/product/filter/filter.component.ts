@@ -9,7 +9,7 @@ import { ProductService } from '../services/product.service';
 export class FilterComponent implements OnInit, OnChanges {
   @Input()
   searchQuery: string = '';
-  
+
   filters: any[] = [];
 
   selectedFilter: any = {};
@@ -24,10 +24,8 @@ export class FilterComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['searchQuery'].currentValue !== this.searchQuery) {
-      setTimeout(() => {
-        this.getFilters();
-      }, 3000);
+    if (changes['searchQuery'].currentValue !== changes['searchQuery'].previousValue) {
+      this.getFilters();
     }
   }
 
