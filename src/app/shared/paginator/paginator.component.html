@@ -1,3 +1,7 @@
 <div class="d-flex pt-3 justify-content-center">
-    <ngb-pagination [collectionSize]="totalRecords" [(page)]="page" (pageChange)="sendPage($event)" />
+    <ngb-pagination [collectionSize]="totalRecords" #pagination [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="sendPage($event)">
+        <ng-template ngbPaginationPrevious>Previous</ng-template>
+        <ng-template ngbPaginationNext>Next</ng-template>
+    </ngb-pagination>
 </div>

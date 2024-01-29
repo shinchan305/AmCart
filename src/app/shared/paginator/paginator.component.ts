@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -6,7 +6,7 @@ import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent {
+export class PaginatorComponent implements OnInit {
 
   @Input()
   page: number = 0;
@@ -14,12 +14,20 @@ export class PaginatorComponent {
   @Input()
   totalRecords: number = 0;
 
+  @Input()
+  pageSize: number = 10;
+
   @Output()
   sendCurrentPage: EventEmitter<number> = new EventEmitter();
 
   constructor(config: NgbPaginationConfig) {
     config.size = 'md pagination-custom';
   }
+
+  ngOnInit(): void {
+      console.log(this.page);
+  }
+
   sendPage(currentPage: number) {
     this.sendCurrentPage.emit(currentPage - 1);
   }

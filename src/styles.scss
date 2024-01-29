@@ -99,27 +99,45 @@ h6 {
         &.active {
             .page-link {
                 background-color: $black-color;
+
+                &:hover {
+                    color: $white-color;
+                    border: none;
+                }
             }
         }
 
         &.disabled {
-            border-radius: none;
-            .page-link {
-                background: none;
-                border-radius: none;
-            }
+            display: none;
         }
 
         a {
-            border: none !important;
+            border: none;
             text-decoration: none;
             color: $black-color;
+            transition: transform .3s;            
 
-            &:hover {
+            &[aria-label="Next"], &[aria-label="Previous"] {
+                &:hover {                
+                    border: none;
+                    color: $black-color;
+                    background-color: white;
+                }
+            }
+
+            &:hover {                
                 border: 1px solid $black-color;
                 color: $black-color;
                 background-color: white;
             }
         }
     }
+}
+
+.colors-wrapper {
+    border: 1px solid #333;
+    border-radius: 50%;
+    height: 14px;
+    width: 14px;
+    display: inline-block;
 }

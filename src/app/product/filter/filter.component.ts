@@ -77,24 +77,28 @@ export class FilterComponent {
       items: [
         {
           id: 'blue',
-          value: '<i class="bi bi-circle-fill" style="color: blue"></i> Blue'
+          value: '<div class="colors-wrapper" style="background-color: blue"></div> Blue'
         },
         {
           id: 'black',
-          value: '<i class="bi bi-circle-fill" style="color: black"></i> Black'
+          value: '<div class="colors-wrapper" style="background-color: black"></div> Black'
         },
         {
           id: 'red',
-          value: '<i class="bi bi-circle-fill" style="color: red"></i> Red'
+          value: '<div class="colors-wrapper" style="background-color: red"></div> Red'
         },
         {
           id: 'green',
-          value: '<i class="bi bi-circle-fill" style="color: green"></i> Green'
+          value: '<div class="colors-wrapper" style="background-color: green"></div> Green'
         },
         {
           id: 'yellow',
-          value: '<i class="bi bi-circle-fill" style="color: yellow"></i> Yellow'
+          value: '<div class="colors-wrapper" style="background-color: yellow"></div> Yellow'
         },
+        {
+          id: 'white',
+          value: '<div class="colors-wrapper" style="background-color: white"></div> White'
+        }
       ]
     },
     {

@@ -22,7 +22,9 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(params => {
+      this.calculateBreadcrumbs();
       this.page = 0;
+      this.totalRecords = 0;
       const category = params['category'];
       let subCategory = params['subCategory'];
       subCategory = this.getSubcategory(subCategory);
@@ -40,8 +42,6 @@ export class CatalogueComponent implements OnInit {
     this._productService.searchProduct(this.searchTerm, pageNumber * 10).subscribe((response: any) => {
       this.filteredProducts = response.products;
       this.totalRecords = response.totalRecords;
-      this.partiallyFilteredProducts = JSON.parse(JSON.stringify(this.filteredProducts));
-      this.calculateBreadcrumbs();
       this.partiallyFilteredProducts = JSON.parse(JSON.stringify(this.filteredProducts));
     })
   }

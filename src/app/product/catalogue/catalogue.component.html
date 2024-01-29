@@ -22,7 +22,7 @@
 
         <div class="row" *ngIf="totalRecords > 0">
             <div class="col-12">
-                <app-paginator [totalRecords]="totalRecords" [page]="page" (sendCurrentPage)="pageChanged($event)"></app-paginator>
+                <app-paginator [totalRecords]="totalRecords" [page]="page + 1" (sendCurrentPage)="pageChanged($event)"></app-paginator>
             </div>
         </div>
     </div>
