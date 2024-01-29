@@ -71,60 +71,6 @@ export class FilterComponent {
           value: 'Rs 2000 - Rs 2999'
         }
       ]
-    },
-    {
-      category: 'Color',
-      items: [
-        {
-          id: 'blue',
-          value: '<div class="colors-wrapper" style="background-color: blue"></div> Blue'
-        },
-        {
-          id: 'black',
-          value: '<div class="colors-wrapper" style="background-color: black"></div> Black'
-        },
-        {
-          id: 'red',
-          value: '<div class="colors-wrapper" style="background-color: red"></div> Red'
-        },
-        {
-          id: 'green',
-          value: '<div class="colors-wrapper" style="background-color: green"></div> Green'
-        },
-        {
-          id: 'yellow',
-          value: '<div class="colors-wrapper" style="background-color: yellow"></div> Yellow'
-        },
-        {
-          id: 'white',
-          value: '<div class="colors-wrapper" style="background-color: white"></div> White'
-        }
-      ]
-    },
-    {
-      category: 'Rating',
-      items: [
-        {
-          min: 1,
-          max: 5,
-          value: '1 <i class="bi bi-star-fill"></i> & above'
-        },
-        {
-          min: 2,
-          max: 5,
-          value: '2 <i class="bi bi-star-fill"></i> & above'
-        },
-        {
-          min: 3,
-          max: 5,
-          value: '3 <i class="bi bi-star-fill"></i> & above'
-        },
-        {
-          min: 4,
-          max: 5,
-          value: '4 <i class="bi bi-star-fill"></i> & above'
-        }
-      ]
     }
   ]
 

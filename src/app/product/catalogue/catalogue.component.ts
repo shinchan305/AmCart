@@ -22,6 +22,7 @@ export class CatalogueComponent implements OnInit {
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(params => {
+      this.filteredProducts = [];
       this.calculateBreadcrumbs();
       this.page = 0;
       this.totalRecords = 0;
