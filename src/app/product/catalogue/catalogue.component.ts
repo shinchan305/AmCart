@@ -30,6 +30,9 @@ export class CatalogueComponent implements OnInit {
       if (category === 'men' || category === 'women') {
         this.searchTerm = subCategory ? `mainCategory=${category}&categories=${subCategory}` : `mainCategory=${category}`;
       }
+      else if(category === 'popular') {
+        this.searchTerm = `categories=${category}`;
+      }
       else {
         this.searchTerm = `query=${subCategory}`;
       }
