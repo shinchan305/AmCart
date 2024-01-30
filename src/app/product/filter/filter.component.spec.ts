@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SafeHtmlPipe } from 'src/app/shared/pipes/safe-html.pipe';
 
@@ -9,6 +10,7 @@ describe('FilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ FilterComponent, SafeHtmlPipe ]
     })
     .compileComponents();
