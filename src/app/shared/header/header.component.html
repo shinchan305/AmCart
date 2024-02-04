@@ -8,12 +8,15 @@
         </div>
         <div class="collapse navbar-collapse justify-content-center" [ngbCollapse]="isMenuCollapsed">
             <ul ngbNav class="nav-links justify-content-center navbar-nav">
-                <li [ngbNavItem]="link.route" *ngFor="let link of links" #listItem (mouseleave)="changeBorder($event, 'transparent', p)" (mouseenter)="changeBorder($event, link.borderColor, p)">
-                    <a ngbNavLink [ngbPopover]="popContent" #p="ngbPopover"
-                        placement="bottom" [disablePopover]="!link.content" (click)="isMenuCollapsed = true"                        
-                        [routerLink]="link.route">
+                <li [ngbNavItem]="link.route" *ngFor="let link of links" #listItem
+                    (mouseleave)="changeBorder($event, 'transparent', p)"
+                    (mouseenter)="changeBorder($event, link.borderColor, p)">
+                    <a ngbNavLink [ngbPopover]="popContent" #p="ngbPopover" placement="bottom"
+                        [disablePopover]="!link.content" (click)="isMenuCollapsed = true" [routerLink]="link.route">
                         <ng-template #popContent>
-                            <app-popover-content [content]="link.content" [headerColor]="link.borderColor" (subcategorySelected)="handleSubcategory($event, listItem, link.route)"></app-popover-content>
+                            <app-popover-content [content]="link.content" [headerColor]="link.borderColor"
+                                (subcategorySelected)="handleSubcategory($event, listItem, link.route)">
+                            </app-popover-content>
                         </ng-template>
                         {{link.name }}
                     </a>
@@ -22,8 +25,15 @@
         </div>
 
         <div class="d-flex align-items-center menu-icons">
-            <input class="form-control me-2" type="search" (keyup.enter)="search(searchTerm)" [(ngModel)]="searchTerm" placeholder="Search" aria-label="Search">
-            <a href="" [ngbTooltip]="'Profile'"><i class="bi bi-person"></i></a>
+            <input class="form-control me-2" type="search" (keyup.enter)="search(searchTerm)" [(ngModel)]="searchTerm"
+                placeholder="Search" aria-label="Search">
+            <a (click)="userProfile()" [ngbPopover]="user" #u="ngbPopover"
+                placement="bottom" [disablePopover]="!userDetails" triggers="mouseenter:mouseleave">
+                <ng-template #user>
+                    <p>Welcome <strong>{{userDetails.name}}</strong></p>
+                </ng-template>
+                <i class="bi bi-person"></i>
+            </a>
             <a href="" [ngbTooltip]="'Wishlist'"><i class="bi bi-heart"></i></a>
             <a href="" [ngbTooltip]="'Bag'"><i class="bi bi-bag"></i></a>
         </div>

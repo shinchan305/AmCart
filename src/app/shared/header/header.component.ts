@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IHeaderLinks } from '../models/IHeaderLinks';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   links: IHeaderLinks[] = [
     {
       name: 'Men', route: '/catalogue/men', borderColor: '#ee5f73', content: {
@@ -41,10 +42,20 @@ export class HeaderComponent {
     { name: 'Contact Us', route: '/contact-us', borderColor: '#ff3f6c' },
   ]
 
+  signInURL: string = "https://amcart.auth.us-east-1.amazoncognito.com/login?client_id=606p99mu99kn0me9svqvkjtksn&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://d3jt12boixkrn5.cloudfront.net/";
+  // signInURL: string = "https://amcart.auth.us-east-1.amazoncognito.com/login?client_id=606p99mu99kn0me9svqvkjtksn&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http%3A%2F%2Flocalhost%3A4201";
+
   isMenuCollapsed: boolean = true;
   searchTerm: string = '';
+  userDetails: any;
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _userService: UserService) { }
+
+  ngOnInit(): void {
+      this._userService.getUserDetails().subscribe((userDetails: any) => {
+        this.userDetails = userDetails;
+      })
+  }
 
   changeBorder(e: any, color: string, p: any) {    
     const target = e.target.firstChild as HTMLElement;
@@ -69,5 +80,13 @@ export class HeaderComponent {
       return;
     }
     this._router.navigateByUrl(`/catalogue/search/${searchTerm}`);
+  }
+
+  userProfile() {
+    if (this.userDetails) {
+
+    } else {
+      window.location.href = this.signInURL;
+    }
   }
 }

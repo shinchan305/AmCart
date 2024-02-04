@@ -14,10 +14,10 @@ export class ProductService {
   }
 
   searchProduct(query: string, from: number) {
-    return this._httpClient.get(`http://localhost:3000/search?${query}&from=${from}`);
+    return this._httpClient.get(`http://localhost:3001/search?${query}&from=${from}`);
   }
 
   getFilters(query: string) {
-    return this._httpClient.get(`http://localhost:3000/filters?${query}`);
+    return this._httpClient.get(`http://localhost:3001/filters?${query}`);
   }
 }
