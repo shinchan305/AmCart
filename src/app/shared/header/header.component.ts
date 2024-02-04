@@ -101,7 +101,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this._userService.logout(this.userDetails.username).subscribe((response: any) => {
+    this._userService.logout(this.userDetails.email).subscribe((response: any) => {
       if (response.success) {
         this.setUserDefaults();
       }
