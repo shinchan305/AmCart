@@ -27,13 +27,16 @@
         <div class="d-flex align-items-center menu-icons">
             <input class="form-control me-2" type="search" (keyup.enter)="search(searchTerm)" [(ngModel)]="searchTerm"
                 placeholder="Search" aria-label="Search">
-            <a (click)="userProfile()" [ngbPopover]="user" #u="ngbPopover"
-                placement="bottom" [disablePopover]="!userDetails" triggers="mouseenter:mouseleave">
-                <ng-template #user>
-                    <p>Welcome <strong>{{userDetails.name}}</strong></p>
-                </ng-template>
-                <i class="bi bi-person"></i>
-            </a>
+            <div class="d-inline" (mouseleave)="toggleUserPopup($event, u)" (mouseenter)="toggleUserPopup($event, u)">
+                <a (click)="userProfile()" [ngbPopover]="user" #u="ngbPopover" placement="bottom"
+                    [disablePopover]="!userDetails">
+                    <ng-template #user>
+                        <p>Welcome <strong>{{userDetails.name}}</strong></p>
+                        <button class="btn btn-small btn-primary" (click)="logout()">Logout</button>
+                    </ng-template>
+                    <i class="bi bi-person"></i>
+                </a>
+            </div>
             <a href="" [ngbTooltip]="'Wishlist'"><i class="bi bi-heart"></i></a>
             <a href="" [ngbTooltip]="'Bag'"><i class="bi bi-bag"></i></a>
         </div>

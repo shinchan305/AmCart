@@ -19,6 +19,10 @@ export class UserService {
         return this._httpClient.get(`http://localhost:3002/userInfo/${token}`);
     }
 
+    logout(username: string) {
+        return this._httpClient.get(`http://localhost:3002/signout/${username}`);
+    }
+
     setUserDetails(userDetails: any) {
         this.userDetails.next(userDetails);
     }

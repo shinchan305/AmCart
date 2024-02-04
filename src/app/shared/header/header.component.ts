@@ -68,6 +68,15 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  toggleUserPopup(e:any, u: any) {
+    if (e.type === 'mouseenter') {
+      u.open();
+    }
+    else {
+      u.close();
+    }
+  }
+
   handleSubcategory(subCategory: string, listItem: any, parentRoute: string) {
     const mouseleaveEvent = new Event('mouseleave');
     listItem.dispatchEvent(mouseleaveEvent);
@@ -86,7 +95,21 @@ export class HeaderComponent implements OnInit {
     if (this.userDetails) {
 
     } else {
+      this.setUserDefaults();
       window.location.href = this.signInURL;
     }
+  }
+
+  logout() {
+    this._userService.logout(this.userDetails.username).subscribe((response: any) => {
+      if (response.success) {
+        this.setUserDefaults();
+      }
+    })
+  }
+
+  setUserDefaults() {
+    localStorage.clear();
+    this._userService.setUserDetails(null);
   }
 }
