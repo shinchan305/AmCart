@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -11,7 +12,7 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [NgbModule],
+      imports: [NgbModule, HttpClientModule],
       schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
