@@ -8,19 +8,20 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
 
     userDetails: BehaviorSubject<any> = new BehaviorSubject(null);
+    baseURL: string = "http://ec2-44-200-135-93.compute-1.amazonaws.com";
 
     constructor(private _httpClient: HttpClient) {}
 
     getTokenBasedOnCode(code: string) {
-        return this._httpClient.get(`http://localhost:3002/getToken/${code}`);
+        return this._httpClient.get(`${this.baseURL}:3002/getToken/${code}`);
     }
 
     getUserInfo(token: string) {
-        return this._httpClient.get(`http://localhost:3002/userInfo/${token}`);
+        return this._httpClient.get(`${this.baseURL}:3002/userInfo/${token}`);
     }
 
     logout(username: string) {
-        return this._httpClient.get(`http://localhost:3002/signout/${username}`);
+        return this._httpClient.get(`${this.baseURL}:3002/signout/${username}`);
     }
 
     setUserDetails(userDetails: any) {
