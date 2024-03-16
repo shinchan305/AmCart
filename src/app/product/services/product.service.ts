@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProductService {
 
-  baseURL: string = "http://ec2-44-200-135-93.compute-1.amazonaws.com";
+  baseURL: string = "http://ec2-44-222-122-130.compute-1.amazonaws.com";
 
   constructor(public _httpClient: HttpClient) { }
 

@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class UserService {
 
     userDetails: BehaviorSubject<any> = new BehaviorSubject(null);
-    baseURL: string = "http://ec2-44-200-135-93.compute-1.amazonaws.com";
+    baseURL: string = "http://ec2-44-222-122-130.compute-1.amazonaws.com";
 
     constructor(private _httpClient: HttpClient) {}
 
