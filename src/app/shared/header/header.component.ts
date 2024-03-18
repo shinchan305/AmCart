@@ -42,8 +42,8 @@ export class HeaderComponent implements OnInit {
     { name: 'Contact Us', route: '/contact-us', borderColor: '#ff3f6c' },
   ]
 
-  signInURL: string = "https://amcart.auth.us-east-1.amazoncognito.com/login?client_id=606p99mu99kn0me9svqvkjtksn&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://d3jt12boixkrn5.cloudfront.net/";
-  // signInURL: string = "https://amcart.auth.us-east-1.amazoncognito.com/login?client_id=606p99mu99kn0me9svqvkjtksn&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http%3A%2F%2Flocalhost%3A4201";
+  // signInURL: string = "https://amcart.auth.us-east-1.amazoncognito.com/login?client_id=606p99mu99kn0me9svqvkjtksn&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://d3jt12boixkrn5.cloudfront.net/";
+  signInURL: string = "https://amcart.auth.us-east-1.amazoncognito.com/login?client_id=606p99mu99kn0me9svqvkjtksn&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http%3A%2F%2Flocalhost%3A4201";
 
   isMenuCollapsed: boolean = true;
   searchTerm: string = '';
@@ -52,16 +52,17 @@ export class HeaderComponent implements OnInit {
   constructor(private _router: Router, private _userService: UserService) { }
 
   ngOnInit(): void {
-      this._userService.getUserDetails().subscribe((userDetails: any) => {
-        this.userDetails = userDetails;
-      })
+    console.log("Test commit");
+    this._userService.getUserDetails().subscribe((userDetails: any) => {
+      this.userDetails = userDetails;
+    })
   }
 
-  changeBorder(e: any, color: string, p: any) {    
+  changeBorder(e: any, color: string, p: any) {
     const target = e.target.firstChild as HTMLElement;
     target.style.borderBottom = `3px solid ${color}`;
     if (color === 'transparent') {
-      p.close();      
+      p.close();
     }
     else {
       p.open();
