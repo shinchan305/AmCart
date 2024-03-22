@@ -52,7 +52,6 @@ export class HeaderComponent implements OnInit {
   constructor(private _router: Router, private _userService: UserService) { }
 
   ngOnInit(): void {
-    console.log("Test commit");
     this._userService.getUserDetails().subscribe((userDetails: any) => {
       this.userDetails = userDetails;
     })
